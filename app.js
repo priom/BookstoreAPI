@@ -1,7 +1,7 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 app.use(bodyParser.json());
 
@@ -10,7 +10,7 @@ Book = require('./models/book');
 
 // connect mongoose
 mongoose.connect('mongodb://localhost/bookstore');
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 //home page
 app.get('/', function (req, res) {
@@ -27,7 +27,7 @@ app.get('/api/genres', function (req, res) {
 
 //add genre via api
 app.post('/api/genres', function (req, res) {
-    var genre = req.body;
+    const genre = req.body;
     Genre.addGenre(genre, function (err, genre) {
         if (err) { throw err; }
         res.json(genre);
@@ -36,8 +36,8 @@ app.post('/api/genres', function (req, res) {
 
 //update genre via api
 app.put('/api/genres/:_id', function (req, res) {
-    var id = req.params._id;
-    var genre = req.body;
+    const id = req.params._id;
+    const genre = req.body;
     Genre.updateGenre(id, genre, {}, function (err, genre) {
         if (err) { throw err; }
         res.json(genre);
@@ -46,7 +46,7 @@ app.put('/api/genres/:_id', function (req, res) {
 
 //delete genre via api
 app.delete('/api/genres/:_id', function (req, res) {
-    var id = req.params._id;
+    const id = req.params._id;
     Genre.deleteGenre(id, function (err, genre) {
         if (err) { throw err; }
         res.json(genre);
@@ -72,7 +72,7 @@ app.get('/api/books/:_id', function (req, res) {
 
 //add book via api
 app.post('/api/books', function (req, res) {
-    var book = req.body;
+    const book = req.body;
     Book.addBook(book, function (err, book) {
         if (err) { throw err; }
         res.json(book);
@@ -81,8 +81,8 @@ app.post('/api/books', function (req, res) {
 
 //update book via api
 app.put('/api/books/:_id', function (req, res) {
-    var id = req.params._id;
-    var book = req.body;
+    const id = req.params._id;
+    const book = req.body;
     Book.updateBook(id, book, {}, function (err, book) {
         if (err) { throw err; }
         res.json(book);
@@ -92,7 +92,7 @@ app.put('/api/books/:_id', function (req, res) {
 
 //delete book via api
 app.delete('/api/books/:_id', function (req, res) {
-    var id = req.params._id;
+    const id = req.params._id;
     Book.deleteBook(id, function (err, book) {
         if (err) { throw err; }
         res.json(book);

@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //genre schema
-var genreSchema = mongoose.Schema({
+const genreSchema = mongoose.Schema({
     name: {
        type: String,
        required: true
@@ -12,7 +12,7 @@ var genreSchema = mongoose.Schema({
     }
 });
 
-var Genre = module.exports = mongoose.model('Genre', genreSchema);
+const Genre = module.exports = mongoose.model('Genre', genreSchema);
 
 //get genres
 module.exports.getGenres = function (callback, limit) {
@@ -26,11 +26,11 @@ module.exports.addGenre = function (genre, callback) {
 
 //update genre
 module.exports.updateGenre = function (id, genre, options, callback) {
-    var query = {
+    const query = {
         _id: id
     };
 
-    var update = {
+    const update = {
         name: genre.name
     };
 
@@ -39,7 +39,7 @@ module.exports.updateGenre = function (id, genre, options, callback) {
 
 //delete genre
 module.exports.deleteGenre = function (id, callback) {
-    var query = {
+    const query = {
         _id: id
     };
     Genre.remove(query, callback);
